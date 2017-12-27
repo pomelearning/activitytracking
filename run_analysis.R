@@ -58,29 +58,29 @@ activity <- activity_labels[, 2];
 extracted_data$activity <- activity[extracted_data$activity];
         
 ## Step 4. Appropriately labels the data set with descriptive variable names.
+names(extracted_data) <- gsub("mean\\(\\)", "Average", names(extracted_data));
+names(extracted_data) <- gsub("std\\(\\)", "Standard Deviation", names(extracted_data));
 
-names(extracted_data)<-gsub("mean\\(\\)", "Average", names(extracted_data));
-names(extracted_data)<-gsub("std\\(\\)", "Standard Deviation", names(extracted_data));
+names(extracted_data) <- gsub("tGravityAccMag", "Gravity Accelerometer Magnitude Time", names(extracted_data));
+names(extracted_data) <- gsub("tBodyAccJerkMag", "Body Accelerometer Jerk Magnitude Time", names(extracted_data));
+names(extracted_data) <- gsub("tBodyGyroJerkMag", "Body Gyroscope Jerk Magnitude Time", names(extracted_data));
+names(extracted_data) <- gsub("tBodyAccMag", "Body Accelerometer Magnitude Time", names(extracted_data));
+names(extracted_data) <- gsub("tBodyGyroMag", "Body Gyroscope Magnitude Time", names(extracted_data));
+names(extracted_data) <- gsub("tBodyAccJerk", "Body Accelerometer Jerk Time", names(extracted_data));
+names(extracted_data) <- gsub("tBodyGyroJerk", "Body Gyroscope Jerk Time", names(extracted_data));
+names(extracted_data) <- gsub("tBodyAcc", "Body Accelerometer Time", names(extracted_data));
+names(extracted_data) <- gsub("tGravityAcc", "Gravity Accelerometer Time", names(extracted_data));
+names(extracted_data) <- gsub("tBodyGyro", "Body Gyroscope Time", names(extracted_data));
 
-names(extracted_data)<-gsub("tGravityAccMag", "Gravity Accelerometer Magnitude Time", names(extracted_data));
-names(extracted_data)<-gsub("tBodyAccJerkMag", "Body Accelerometer Jerk Magnitude Time", names(extracted_data));
-names(extracted_data)<-gsub("tBodyGyroJerkMag", "Body Gyroscope Jerk Magnitude Time", names(extracted_data));
-names(extracted_data)<-gsub("tBodyAccMag", "Body Accelerometer Magnitude Time", names(extracted_data));
-names(extracted_data)<-gsub("tBodyGyroMag", "Body Gyroscope Magnitude Time", names(extracted_data));
-names(extracted_data)<-gsub("tBodyAccJerk", "Accelerometer Jerk Time", names(extracted_data));
-names(extracted_data)<-gsub("tBodyGyroJerk", "Body Gyroscope Jerk Time", names(extracted_data));
-names(extracted_data)<-gsub("tBodyAcc", "Body Accelerometer Time", names(extracted_data));
-names(extracted_data)<-gsub("tGravityAcc", "Gravity Accelerometer Time", names(extracted_data));
-names(extracted_data)<-gsub("tBodyGyro", "Body Gyroscope Time", names(extracted_data));
+names(extracted_data) <- gsub("fBodyAccJerk", "Accelerometer Jerk Frequency", names(extracted_data));
+names(extracted_data) <- gsub("fBodyAccMag", "Body Accelerometer Magnitude Frequency", names(extracted_data));
+names(extracted_data) <- gsub("fBodyAcc", "Body Accelerometer Frequency", names(extracted_data));
+names(extracted_data) <- gsub("fBodyGyro", "Body Gyroscope Frequency", names(extracted_data));
 
-names(extracted_data)<-gsub("fBodyAccJerk", "Accelerometer Jerk Frequency", names(extracted_data));
-names(extracted_data)<-gsub("fBodyAccMag", "Body Accelerometer Magnitude Frequency", names(extracted_data));
-names(extracted_data)<-gsub("fBodyAcc", "Body Accelerometer Frequency", names(extracted_data));
-names(extracted_data)<-gsub("fBodyGyro", "Body Gyroscope Frequency", names(extracted_data));
+names(extracted_data) <- gsub("fBodyBodyAccJerkMag", "Body Accelerometer Jerk Magnitude Frequency", names(extracted_data));
+names(extracted_data) <- gsub("fBodyBodyGyroMag", "Body Gyroscope Magnitude Frequency", names(extracted_data));
+names(extracted_data) <- gsub("fBodyBodyGyroJerkMag", "Body Gyroscope Jerk Magnitude Frequency", names(extracted_data));
 
-names(extracted_data)<-gsub("fBodyBodyAccJerkMag", "Body Accelerometer Jerk Magnitude Frequency", names(extracted_data));
-names(extracted_data)<-gsub("fBodyBodyGyroMag", "Body Gyroscope Magnitude Frequency", names(extracted_data));
-names(extracted_data)<-gsub("fBodyBodyGyroJerkMag", "Body Gyroscope Jerk Magnitude Frequency", names(extracted_data));
 
 ## Step 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 melted_data <- melt(extracted_data, id.vars = c("activity", "subject"))
